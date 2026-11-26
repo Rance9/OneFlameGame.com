@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import releaseData from '../data/release.json';
+import { shortNotice } from '../lib/terms';
+
+interface Release {
+  released: boolean;
+  /** For example 1.0.0 */
+  version?: string;
+  /** For example one-flame-v1.0.0.nes */
+  fileName?: string;
+  /** For example 512 KB */
+  sizeText?: string;
+  sha256?: string;
+}
+
+const release = releaseData as Release;
+const ready = release.released && release.version && release.fileName && release.sizeText && release.sha256;
+if (release.released && !ready) {
+  throw new Error('src/data/release.json: "released" is true, so version, fileName, sizeText and sha256 are all needed.');
+}
+const downloadUrl = ready ? `https://download.oneflamegame.com/one-flame-v${release.version}.nes` : '';
+---
+<Base title="Download - One Flame" description="One Flame for the NES, free.">
+<section class="post-page terms dl"><div class="wrap">
+<h1>Download</h1>
+<p class="lead" style="margin:-4px 0 14px;color:var(--dim)">One Flame for the NES, free.</p>
+{ready ? (
+<Fragment>
+<div class="card"><img src="/img/rom-chip.png" alt=""><div>
+<h3>One Flame v{release.version}</h3>
+<p class="facts">NES ROM, iNES file: <code class="fn">{release.fileName}</code><br>Size: {release.sizeText}<br>SHA-256: <code>{release.sha256}</code></p>
+</div></div>
+<a class="getit" href={downloadUrl} referrerpolicy="no-referrer-when-downgrade">DOWNLOAD ONE FLAME V{release.version!.toUpperCase()}</a>
+<p class="free">Free. No sign-up, no email, nothing to fill in.</p>
+<div class="body">
+<h2>How to play it</h2>
+<ul><li>in an NES emulator on your computer, phone or handheld;</li><li>in Classic Cart Studio, in your browser or on Windows;</li><li>on an NES Classic Edition, added with Classic Cart Studio or hakchi2 CE.</li></ul>
+<h2>Terms</h2>
+<div class="notice">{shortNotice.map((text) => <p>{text}</p>)}</div>
+<a class="more" href="/terms/">READ THE FULL TERMS &#8594;</a>
+</div>
+</Fragment>
+) : (
+<div class="soonbox"><img class="soonimg" src="/img/rom-chip.png" alt="">
+<span class="tag3">COMING SOON</span>
+<p class="soon">The One Flame ROM goes up here with its first release, v1.0.0. It will be free.</p>
+<p class="small">One Flame &copy; 2026 Rance9 LLC. All rights reserved.</p></div>
+)}
+</div></section>
+</Base>
