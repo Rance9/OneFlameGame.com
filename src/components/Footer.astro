@@ -1,4 +1,11 @@
-<footer><div class="wrap"><img src="/img/rance9.png" alt="Rance9">
+---
+interface Props {
+  /** True on the About Rance9 page, where the logo doesn't link to the page itself. */
+  onAbout?: boolean;
+}
+const { onAbout = false } = Astro.props;
+---
+<footer><div class="wrap">{onAbout ? <img src="/img/rance9.png" alt="Rance9"> : <a href="/rance9/"><img src="/img/rance9.png" alt="Rance9"></a>}
 <div><p>One Flame is an independent game by <a class="pub" href="/rance9/" title="About Rance9">Rance9</a>. It is not affiliated with, endorsed by, sponsored by or licensed by Nintendo.</p>
 <p>Nintendo, NES and NES Classic Edition are trademarks of Nintendo. All other trademarks are the property of their respective owners.</p>
 <p class="credits">Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. Google Play and the Google Play logo are trademarks of Google LLC. &copy;2026 Valve Corporation. Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.</p>

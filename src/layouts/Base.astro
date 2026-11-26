@@ -62,7 +62,7 @@ const beaconToken = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_BEACON_TOKE
 <body class:list={[{ home }]}>
 <Nav home={home} active={active} />
 <slot />
-<Footer />
+<Footer onAbout={active === 'rance9'} />
 {beaconToken && <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: beaconToken })}></script>}
 </body>
 </html>
