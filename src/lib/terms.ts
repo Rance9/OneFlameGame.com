@@ -9,7 +9,7 @@ export const headings: Record<string, string> = {
   'SHARING': 'Sharing',
   'NOT ALLOWED': 'Not allowed',
   'EVERYTHING ELSE IS RESERVED': 'Everything else is reserved',
-  'THE PLAYER IN THE STEAM AND PHONE VERSIONS': 'The player in the Steam and phone versions',
+  'THE PLAYER IN THE STEAM AND MOBILE VERSIONS': 'The player in the Steam and mobile versions',
   'IF THESE TERMS ARE BROKEN': 'If these terms are broken',
   'LATER VERSIONS': 'Later versions',
   'NO WARRANTY': 'No warranty',

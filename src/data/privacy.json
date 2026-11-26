@@ -13,7 +13,7 @@
     {
       "head": "What this page covers",
       "paragraphs": [
-        "This policy covers OneFlameGame.com, the One Flame ROM you can download here, and the One Flame versions for Steam, iPhone and Android."
+        "This policy covers OneFlameGame.com, the One Flame ROM you can download here, and the One Flame versions for Steam, iOS and Android."
       ],
       "items": []
     },
@@ -66,7 +66,7 @@
       ],
       "items": [
         "Your saves stay on your device. On Steam, they are kept in a folder for your Steam account and synced by Steam Cloud, under Valve's privacy policy. The Steam version checks which Steam account is playing only so it can keep each account's saves separate; that check happens on your computer and nothing is sent to us.",
-        "On iPhone and Android, saves stay on your phone. The apps make no network connections during play. The only time they go online is if you choose to open a link to another website.",
+        "On iOS and Android, saves stay on your device. The apps make no network connections during play. The only time they go online is if you choose to open a link to another website.",
         "If you get One Flame from Steam, the App Store or Google Play, Valve, Apple or Google handle your purchase, download and account under their own privacy policies."
       ]
     },

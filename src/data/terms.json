@@ -97,9 +97,9 @@
     },
     {
       "number": "5",
-      "head": "THE PLAYER IN THE STEAM AND PHONE VERSIONS",
+      "head": "THE PLAYER IN THE STEAM AND MOBILE VERSIONS",
       "paragraphs": [
-        "In the Steam, Android and iPhone versions, One Flame runs in the Classic Cart Studio player. That player is separate software under its own license, the GNU General Public License version 3, and its terms and source are listed in those versions' Licenses & Source page. These terms cover the One Flame ROM only."
+        "In the Steam, iOS and Android versions, One Flame runs in the Classic Cart Studio player. That player is separate software under its own license, the GNU General Public License version 3, and its terms and source are listed in those versions' Licenses & Source page. These terms cover the One Flame ROM only."
       ],
       "items": []
     },
