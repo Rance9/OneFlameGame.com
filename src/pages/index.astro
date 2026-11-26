@@ -72,7 +72,7 @@ const latest = (await getPosts()).slice(0, 3);
 {latest.length > 0 && (
 <section class="news" id="news"><div class="wrap">
 <h2>Latest news</h2>
-<div class="grid">
+<div class="grid" data-count={latest.length}>
 {latest.map((post) => (
 <a href={postUrl(post)}><article class="post"><img src={post.data.cover} alt=""><div><time datetime={isoDate(post.data.date)}>{shortDate(post.data.date)}</time><h3>{post.data.title}</h3><p>{post.data.summary}</p></div></article></a>
 ))}

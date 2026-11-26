@@ -191,6 +191,14 @@ body.home{background-image:none}
 
 /* the main page's news cards are links and keep equal heights */
 #news .grid>a{display:grid}
+/* with fewer than three posts, the cards keep their width and sit centered */
+@media(min-width:821px){#news .grid[data-count="1"]{grid-template-columns:calc((100% - 36px) / 3);justify-content:center}#news .grid[data-count="2"]{grid-template-columns:repeat(2,calc((100% - 36px) / 3));justify-content:center}}
+
+/* the Where to play boxes sit centered in the column */
+.stores{justify-content:center}
+
+/* the main page's section openings run the full column before wrapping */
+.home .lead{max-width:none}
 
 /* news: two pager buttons, a lone OLDER link kept in its column, and quotes as the editor saves them */
 .pager{gap:16px;flex-wrap:wrap}
