@@ -18,7 +18,7 @@ const [featured, ...rest] = page.data;
 const title = page.currentPage === 1 ? 'News - One Flame' : `News, page ${page.currentPage} - One Flame`;
 const withSlash = (url: string) => (url.endsWith('/') ? url : `${url}/`);
 ---
-<Base title={title} description="How One Flame is coming along, newest first." active="news">
+<Base title={title} description="How One Flame is coming along, newest first." active="news" starry>
 <section class="page-head"><div class="wrap"><h1>News</h1>
 <p class="lead">How One Flame is coming along, newest first.</p></div></section>
 <section class="news" style="border-top:0;padding-top:8px"><div class="wrap">

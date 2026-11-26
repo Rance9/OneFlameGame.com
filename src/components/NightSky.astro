@@ -1,16 +1,22 @@
 ---
-// The main page's night sky: pixel stars at random places across its top section, each twinkling on its own
-// rhythm, with a few cross-shaped stars that flash now and then.
+// The night sky: pixel stars at random places, each twinkling on its own rhythm, with a few cross-shaped
+// stars that flash now and then. By default it fills the element it sits in (the main page's top section);
+// with `fixed` it fills the window behind the whole page.
+interface Props {
+  fixed?: boolean;
+}
+const { fixed = false } = Astro.props;
 ---
-<canvas class="sky" aria-hidden="true"></canvas>
+<canvas class:list={['sky', { fixed }]} aria-hidden="true"></canvas>
 
 <script>
-  const canvas = document.querySelector<HTMLCanvasElement>('canvas.sky');
-  const ctx = canvas?.getContext('2d');
-  if (canvas && ctx) {
-    type Star = { x: number; y: number; size: number; color: string; base: number; peak: number; period: number; phase: number; cross: boolean; flashAt: number };
-    const colors = ['255,255,255', '255,255,255', '255,255,255', '242,227,166', '207,230,255'];
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  type Star = { x: number; y: number; size: number; color: string; base: number; peak: number; period: number; phase: number; cross: boolean; flashAt: number };
+  const colors = ['255,255,255', '255,255,255', '255,255,255', '242,227,166', '207,230,255'];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  for (const canvas of document.querySelectorAll<HTMLCanvasElement>('canvas.sky')) {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) continue;
     let stars: Star[] = [];
     let unit = 1;
 

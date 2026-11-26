@@ -179,6 +179,9 @@ body.home{background-image:none}
 .hero{position:relative}
 .hero>div{position:relative;z-index:1}
 .sky{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+/* on the Download, About Rance9 and News pages the sky fills the window behind the whole page */
+.sky.fixed{position:fixed;z-index:-1}
+body.starry{background:transparent}
 
 /* the phone menu: a full-width panel under the menu bar, in the menu bar's colors and font */
 .burger{cursor:pointer}

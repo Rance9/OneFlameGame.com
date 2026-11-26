@@ -8,6 +8,7 @@ import '@fontsource/inter/600.css';
 import '../styles/site.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import NightSky from '../components/NightSky.astro';
 
 interface Props {
   /** The page title, shown in the browser tab and on share cards. */
@@ -23,6 +24,8 @@ interface Props {
   active?: 'news' | 'rance9';
   /** False on the not-found page, which has no address of its own. */
   canonical?: boolean;
+  /** True for a twinkling night sky behind the whole page. */
+  starry?: boolean;
 }
 
 const {
@@ -34,6 +37,7 @@ const {
   home = false,
   active,
   canonical = true,
+  starry = false,
 } = Astro.props;
 
 const site = Astro.site ?? new URL('https://oneflamegame.com');
@@ -62,7 +66,8 @@ const beaconToken = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_BEACON_TOKE
 <meta property="og:image:alt" content={imageAlt}>
 <meta name="twitter:card" content="summary_large_image">
 </head>
-<body class:list={[{ home }]}>
+<body class:list={[{ home, starry }]}>
+{starry && <NightSky fixed />}
 <Nav home={home} active={active} />
 <slot />
 <Footer onAbout={active === 'rance9'} />
