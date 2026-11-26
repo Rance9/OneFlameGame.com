@@ -197,8 +197,8 @@ body.home{background-image:none}
 /* the Where to play boxes sit centered in the column */
 .stores{justify-content:center}
 
-/* the main page's section openings run the full column before wrapping */
-.home .lead{max-width:none}
+/* the main page's section openings and the Where to play list run the full column before wrapping */
+.home .lead,.home .where ul{max-width:none}
 
 /* news: two pager buttons, a lone OLDER link kept in its column, and quotes as the editor saves them */
 .pager{gap:16px;flex-wrap:wrap}
