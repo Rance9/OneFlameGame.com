@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import { getPosts, shortDate, isoDate, postUrl, type Post } from '../../lib/news';
+import { getPosts, shortDate, isoDate, postUrl, externalLinksInNewTab, type Post } from '../../lib/news';
 
 export const getStaticPaths = (async () => {
   const posts = await getPosts();
@@ -20,6 +20,8 @@ interface Props {
 
 const { post, newer, older } = Astro.props;
 const { Content } = await render(post);
+// links to other websites open in a new tab
+const bodyHtml = post.rendered?.html;
 const { title, date, summary, cover, coverAlt, coverCaption } = post.data;
 ---
 <Base title={`${title} - One Flame`} description={summary} image={cover} imageAlt={coverAlt} type="article" active="news">
@@ -28,7 +30,7 @@ const { title, date, summary, cover, coverAlt, coverCaption } = post.data;
 <p class="meta"><time datetime={isoDate(date)}>{shortDate(date)}</time> <span>&middot; RANCE9</span></p>
 <h1>{title}</h1>
 <figure><img src={cover} alt={coverAlt}>{coverCaption && <figcaption>{coverCaption}</figcaption>}</figure>
-<div class="body entry"><Content /></div>
+<div class="body entry">{bodyHtml !== undefined ? <Fragment set:html={externalLinksInNewTab(bodyHtml)} /> : <Content />}</div>
 {(newer || older) && <div class="next">{newer && <a href={postUrl(newer)}><small>&#8592; NEWER</small><b>{newer.data.title}</b></a>}{older && <a class:list={['r', { solo: !newer }]} href={postUrl(older)}><small>OLDER &#8594;</small><b>{older.data.title}</b></a>}</div>}
 </div></section>
 </Base>
