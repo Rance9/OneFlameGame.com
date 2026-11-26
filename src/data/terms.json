@@ -1,0 +1,147 @@
+{
+  "short": [
+    "One Flame",
+    "© 2026 Rance9 LLC. All rights reserved.",
+    "One Flame is free, and you're welcome to share it. You may give away copies of the unchanged One Flame ROM file, free of charge, together with its TERMS file and a link to OneFlameGame.com. You may also put it on a cartridge, for yourself or to give away, as long as you don't charge for it.",
+    "You may not sell it or charge for it in any way, change it, include it in a collection with other games, or offer it on a website, app or service that shows ads.",
+    "Everything else in One Flame, including its code, art, music, characters and story, is reserved. Full terms: TERMS.txt, and at OneFlameGame.com/terms",
+    "One Flame is an independent game. It is not affiliated with, endorsed by, sponsored by or licensed by Nintendo."
+  ],
+  "title": "ONE FLAME: TERMS FOR PLAYING AND SHARING",
+  "header": [
+    "Terms version 1, for One Flame v1.0.0. In effect from the release of One Flame v1.0.0.",
+    "One Flame is © 2026 Rance9 LLC. All rights reserved, except for the permissions below."
+  ],
+  "sections": [
+    {
+      "number": "1",
+      "head": "PLAYING",
+      "paragraphs": [
+        "You may play One Flame, and keep copies on your own devices to play it, whether you got it from Rance9 LLC or from someone sharing it under these terms."
+      ],
+      "items": []
+    },
+    {
+      "number": "2",
+      "head": "SHARING",
+      "paragraphs": [
+        "You may give copies of the One Flame ROM file to other people, or offer it for download, only if all of these are true:"
+      ],
+      "items": [
+        {
+          "mark": "a",
+          "text": "It's free. No price, fee, required donation, subscription, paid membership or other charge for the file or for access to it."
+        },
+        {
+          "mark": "b",
+          "text": "It's unchanged. The ROM file is exactly as Rance9 LLC released it."
+        },
+        {
+          "mark": "c",
+          "text": "These terms go with it. A file copy includes this TERMS file, unchanged. A download link has these terms linked next to it: OneFlameGame.com/terms. A physical copy comes with these terms or that link, on paper or on its label."
+        },
+        {
+          "mark": "d",
+          "text": "It points home. A link to OneFlameGame.com appears where you offer it."
+        },
+        {
+          "mark": "e",
+          "text": "It stands alone. One Flame is offered by itself: not in a collection, pack, compilation, bundle or multi-game set."
+        },
+        {
+          "mark": "f",
+          "text": "Physical copies are free too. You may put the unchanged ROM on a cartridge or other physical media, for yourself or to give away. You may not sell it or charge for it, including for the cartridge or media it's on."
+        },
+        {
+          "mark": "g",
+          "text": "No ads. The website, app or service offering it shows no advertising."
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "head": "NOT ALLOWED",
+      "paragraphs": [
+        "Without written permission from Rance9 LLC, you may not:"
+      ],
+      "items": [
+        {
+          "mark": "-",
+          "text": "sell One Flame or charge for it in any way;"
+        },
+        {
+          "mark": "-",
+          "text": "change it, including patches, hacks, translations or edited versions, or share a changed version;"
+        },
+        {
+          "mark": "-",
+          "text": "take its code, art, music or any other part to use elsewhere;"
+        },
+        {
+          "mark": "-",
+          "text": "include it in a collection, pack or multi-game set with other games;"
+        },
+        {
+          "mark": "-",
+          "text": "use the names One Flame or Rance9, or One Flame's characters, in any way that suggests Rance9 LLC made, approved or sponsors something it didn't."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "head": "EVERYTHING ELSE IS RESERVED",
+      "paragraphs": [
+        "These terms give only the permissions written here. One Flame's code, art, music, characters and story are all rights reserved. Videos, streams and fan art are not covered by these terms."
+      ],
+      "items": []
+    },
+    {
+      "number": "5",
+      "head": "THE PLAYER IN THE STEAM AND PHONE VERSIONS",
+      "paragraphs": [
+        "In the Steam, Android and iPhone versions, One Flame runs in the Classic Cart Studio player. That player is separate software under its own license, the GNU General Public License version 3, and its terms and source are listed in those versions' Licenses & Source page. These terms cover the One Flame ROM only."
+      ],
+      "items": []
+    },
+    {
+      "number": "6",
+      "head": "IF THESE TERMS ARE BROKEN",
+      "paragraphs": [
+        "Your permission under these terms ends automatically if you break them."
+      ],
+      "items": []
+    },
+    {
+      "number": "7",
+      "head": "LATER VERSIONS",
+      "paragraphs": [
+        "These terms cover the version of One Flame they come with. A later version may come with different terms."
+      ],
+      "items": []
+    },
+    {
+      "number": "8",
+      "head": "NO WARRANTY",
+      "paragraphs": [
+        "One Flame is provided \"as is,\" without warranty of any kind. To the extent the law allows, Rance9 LLC is not liable for any damage that comes from using it."
+      ],
+      "items": []
+    },
+    {
+      "number": "9",
+      "head": "NINTENDO",
+      "paragraphs": [
+        "One Flame is an independent game. It is not affiliated with, endorsed by, sponsored by or licensed by Nintendo. Nintendo and NES are trademarks of Nintendo."
+      ],
+      "items": []
+    },
+    {
+      "number": "10",
+      "head": "ASKING PERMISSION",
+      "paragraphs": [
+        "For anything these terms don't allow, write to rance9@classiccartstudio.com."
+      ],
+      "items": []
+    }
+  ]
+}
