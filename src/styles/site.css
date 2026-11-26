@@ -163,6 +163,9 @@ h1{font:400 40px Silkscreen;margin:0 0 14px;background:linear-gradient(#f2e3a6 0
 .menu a.on{color:var(--ember);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
 @media(min-width:821px){.menu{display:none}}
 
+/* the main page's news cards are links and keep equal heights */
+#news .grid>a{display:grid}
+
 /* news: two pager buttons, a lone OLDER link kept in its column, and quotes as the editor saves them */
 .pager{gap:16px;flex-wrap:wrap}
 @media(min-width:821px){.next .solo{grid-column:2}}

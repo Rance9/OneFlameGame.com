@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getPosts, shortDate, isoDate } from '../lib/news';
+import { getPosts, shortDate, isoDate, postUrl } from '../lib/news';
 
 const latest = (await getPosts()).slice(0, 3);
 ---
@@ -71,7 +71,7 @@ const latest = (await getPosts()).slice(0, 3);
 <h2>Latest news</h2>
 <div class="grid">
 {latest.map((post) => (
-<article class="post"><img src={post.data.cover} alt=""><div><time datetime={isoDate(post.data.date)}>{shortDate(post.data.date)}</time><h3>{post.data.title}</h3><p>{post.data.summary}</p></div></article>
+<a href={postUrl(post)}><article class="post"><img src={post.data.cover} alt=""><div><time datetime={isoDate(post.data.date)}>{shortDate(post.data.date)}</time><h3>{post.data.title}</h3><p>{post.data.summary}</p></div></article></a>
 ))}
 </div>
 <a class="more" href="/news/">ALL NEWS &#8594;</a>
