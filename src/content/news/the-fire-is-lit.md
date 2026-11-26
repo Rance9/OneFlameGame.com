@@ -1,7 +1,7 @@
 ---
 title: The fire is lit
 date: 2026-11-26
-summary: OneFlameGame.com is open. Meet One Flame, an original NES game about two children carrying the last fire across an ice age.
+summary: Meet One Flame, an original NES game about two children carrying the last fire across an ice age.
 cover: /news/kesa-and-brimi.png
 coverAlt: Kesa holding the torch, beside Brimi
 coverCaption: Kesa and Brimi, and the last fire of the Eld.
