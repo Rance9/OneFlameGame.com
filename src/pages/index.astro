@@ -1,12 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
+import NightSky from '../components/NightSky.astro';
 import { getPosts, shortDate, isoDate, postUrl } from '../lib/news';
 
 const latest = (await getPosts()).slice(0, 3);
 ---
 <Base title="One Flame" description="Two children. One fire. A whole ice age to cross." home>
 
-<header class="hero"><div><img src="/img/title-art.png" alt="One Flame: two children with a torch on a snowfield at night, mountains and a smoking volcano behind">
+<header class="hero"><NightSky /><div><img src="/img/title-art.png" alt="One Flame: two children with a torch on a snowfield at night, mountains and a smoking volcano behind">
 <p class="tag">Two children. One fire. A whole ice age to cross.</p><p class="cue">SCROLL<b>&#9660;</b></p></div></header>
 
 <section class="tale" id="tale"><div class="wrap"><div>
