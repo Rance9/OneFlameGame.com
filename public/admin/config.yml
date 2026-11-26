@@ -66,5 +66,6 @@ collections:
         label: Body
         widget: richtext
         format: html
-        buttons: [bold, italic, strikethrough, code, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six, quote, bulleted-list, numbered-list, align]
+        # No heading 1: the post title is the page's heading 1.
+        buttons: [bold, italic, strikethrough, code, link, heading-two, heading-three, heading-four, heading-five, heading-six, quote, bulleted-list, numbered-list, align]
         editor_components: [code-block, image, table]

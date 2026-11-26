@@ -28,7 +28,7 @@ const { title, date, summary, cover, coverAlt, coverCaption } = post.data;
 <p class="meta"><time datetime={isoDate(date)}>{shortDate(date)}</time> <span>&middot; RANCE9</span></p>
 <h1>{title}</h1>
 <figure><img src={cover} alt={coverAlt}>{coverCaption && <figcaption>{coverCaption}</figcaption>}</figure>
-<div class="body"><Content /></div>
+<div class="body entry"><Content /></div>
 {(newer || older) && <div class="next">{newer && <a href={postUrl(newer)}><small>&#8592; NEWER</small><b>{newer.data.title}</b></a>}{older && <a class:list={['r', { solo: !newer }]} href={postUrl(older)}><small>OLDER &#8594;</small><b>{older.data.title}</b></a>}</div>}
 </div></section>
 </Base>

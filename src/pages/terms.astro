@@ -3,11 +3,11 @@ import Base from '../layouts/Base.astro';
 import { terms, shortNotice, headings } from '../lib/terms';
 ---
 <Base title="Terms - One Flame" description="Playing and sharing One Flame.">
-<section class="post-page terms"><div class="wrap">
+<section class="post-page terms legal"><div class="wrap">
 <h1>Terms</h1>
 <p class="lead" style="margin:-4px 0 14px;color:var(--dim)">Playing and sharing One Flame.</p>
 <p class="vers">TERMS VERSION 1 &middot; FOR ONE FLAME V1.0.0<br><span>IN EFFECT FROM THE RELEASE OF ONE FLAME V1.0.0</span></p>
-<p class="lead">{terms.header[1]}</p>
+<p class="lead intro">{terms.header[1]}</p>
 <div class="notice"><p class="nt">In short</p>{shortNotice.map((text) => <p>{text}</p>)}</div>
 <div class="body">{terms.sections.map((section) => (
 <Fragment><h2>{section.number}. {headings[section.head]}</h2>{section.paragraphs.map((text) => <p>{text}</p>)}{section.items.length > 0 && <ol>{section.items.map((item) => <li><b>{item.mark === '-' ? '•' : `${item.mark}.`}</b><span>{item.text}</span></li>)}</ol>}</Fragment>
