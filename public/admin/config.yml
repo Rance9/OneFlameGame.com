@@ -24,12 +24,25 @@ collections:
     create: true
     delete: true
     slug: '{{slug}}'
-    summary: '{{title}}'
+    summary: "{{title}} · {{date | date('MMM D, YYYY')}} · {{draft | ternary('Draft', 'Published')}}"
+    table_columns:
+      - { field: "{{draft | ternary('Draft', 'Published')}}", label: Status }
+      - { field: "{{date | date('MMM D, YYYY')}}", label: Date }
+      - { field: title, label: Title }
+      - { field: "{{summary | truncate(90)}}", label: Summary }
+      - { field: "/news/{{slug}}/", label: Address }
     sortable_fields:
-      fields: [date, title]
+      fields: [date, title, draft]
       default:
         field: date
         direction: descending
+    view_filters:
+      filters:
+        - { name: drafts, label: Drafts, field: draft, eq: true }
+        - { name: published, label: Published, field: draft, eq: false }
+    view_groups:
+      groups:
+        - { name: year, label: Year, field: date, pattern: '\d{4}' }
     fields:
       - name: title
         label: Title
