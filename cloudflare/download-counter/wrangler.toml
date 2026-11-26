@@ -1,0 +1,14 @@
+name = "one-flame-download-counter"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+
+# Served only at download.oneflamegame.com, not at a workers.dev address.
+workers_dev = false
+
+[[routes]]
+pattern = "download.oneflamegame.com"
+custom_domain = true
+
+[[analytics_engine_datasets]]
+binding = "DOWNLOADS"
+dataset = "one_flame_downloads"
