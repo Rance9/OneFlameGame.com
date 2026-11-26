@@ -1,0 +1,29 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import Base from '../../layouts/Base.astro';
+import { getPosts, shortDate, isoDate, postUrl, type Post } from '../../lib/news';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getPosts();
+  // Posts per News page: the featured post and a grid of six.
+  return paginate(posts, { pageSize: 7 });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  page: Page<Post>;
+}
+
+const { page } = Astro.props;
+const [featured, ...rest] = page.data;
+const title = page.currentPage === 1 ? 'News - One Flame' : `News, page ${page.currentPage} - One Flame`;
+const withSlash = (url: string) => (url.endsWith('/') ? url : `${url}/`);
+---
+<Base title={title} description="How One Flame is coming along, newest first." active="news">
+<section class="page-head"><div class="wrap"><h1>News</h1>
+<p class="lead">How One Flame is coming along, newest first.</p></div></section>
+<section class="news" style="border-top:0;padding-top:8px"><div class="wrap">
+{featured && <a class="feature" href={postUrl(featured)}><img src={featured.data.cover} alt=""><div><time datetime={isoDate(featured.data.date)}>{shortDate(featured.data.date)}</time><h3>{featured.data.title}</h3><p>{featured.data.summary}</p><span class="read">READ &#8594;</span></div></a>}
+{rest.length > 0 && <div class="grid">{rest.map((post) => <a href={postUrl(post)}><article class="post"><img src={post.data.cover} alt=""><div><time datetime={isoDate(post.data.date)}>{shortDate(post.data.date)}</time><h3>{post.data.title}</h3><p>{post.data.summary}</p></div></article></a>)}</div>}
+{(page.url.prev || page.url.next) && <div class="pager">{page.url.prev && <a class="more" href={withSlash(page.url.prev)}>&#8592; NEWER POSTS</a>}{page.url.next && <a class="more" href={withSlash(page.url.next)}>OLDER POSTS &#8594;</a>}</div>}
+</div></section>
+</Base>
