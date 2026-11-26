@@ -160,6 +160,9 @@ h1{font:400 40px Silkscreen;margin:0 0 14px;background:linear-gradient(#f2e3a6 0
 /* the title screen's ONE FLAME lettering as the menu bar's logo */
 .brand img{display:block;height:30px;width:auto}
 
+/* the About Rance9 page's VISIT RANCE9.COM button, centered */
+.r9 .go{display:table;margin-left:auto;margin-right:auto}
+
 /* the About Rance9 page's footer is the row of links only */
 footer.links-only .fl{margin-top:0}
 
