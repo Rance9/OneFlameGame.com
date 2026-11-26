@@ -1,0 +1,70 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms@0.273.1/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: Rance9/OneFlameGame.com
+  branch: main
+  # Sign in with a GitHub token limited to this repository.
+  auth_methods: [token]
+
+media_folder: public/news
+public_folder: /news
+
+output:
+  omit_empty_optional_fields: true
+
+collections:
+  - name: news
+    label: News
+    label_singular: News post
+    description: Posts for the News page. Drafts show on localhost only; turn Draft off to publish.
+    folder: src/content/news
+    extension: md
+    format: frontmatter
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    summary: '{{title}}'
+    sortable_fields:
+      fields: [date, title]
+      default:
+        field: date
+        direction: descending
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+        type: date
+        format: YYYY-MM-DD
+        default: '{{now}}'
+      - name: summary
+        label: Summary
+        widget: text
+        hint: One or two sentences for the cards on the main page and the News page.
+      - name: cover
+        label: Cover picture
+        widget: image
+        hint: Shown on the cards and at the top of the post.
+      - name: coverAlt
+        label: Cover picture description
+        widget: string
+        hint: What the cover picture shows, for people who can't see it.
+      - name: coverCaption
+        label: Cover caption
+        widget: string
+        required: false
+        hint: Optional. Shown under the cover picture on the post.
+      - name: draft
+        label: Draft
+        widget: boolean
+        default: true
+        hint: Drafts show on localhost only. Turn this off to publish the post.
+      - name: body
+        label: Body
+        widget: richtext
+        format: html
+        buttons: [bold, italic, strikethrough, code, link, heading-one, heading-two, heading-three, heading-four, heading-five, heading-six, quote, bulleted-list, numbered-list, align]
+        editor_components: [code-block, image, table]
