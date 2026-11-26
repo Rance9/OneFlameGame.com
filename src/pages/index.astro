@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import { getPosts, shortDate, isoDate } from '../lib/news';
+
+const latest = (await getPosts()).slice(0, 3);
+---
+<Base title="One Flame" description="Two children. One fire. A whole ice age to cross." home>
+
+<header class="hero"><div><img src="/img/title-art.png" alt="One Flame: two children with a torch on a snowfield at night, mountains and a smoking volcano behind">
+<p class="tag">Two children. One fire. A whole ice age to cross.</p><p class="cue">SCROLL<b>&#9660;</b></p></div></header>
+
+<section class="tale" id="tale"><div class="wrap"><div>
+<h2>The tale</h2>
+<p class="lead">The cold came and did not leave. Winter by winter the ice walked down the valley, and one by one the fires of the Eld went out, until there was a single fire left in the back of the cave, and then a single torch lit from it.</p>
+<p>The old ones of the tribe remembered a mountain that smoked. They called it the Great Ember.</p>
+<p>A girl named Kesa and a boy named Brimi were chosen because they were quick, because they were light enough to cross ice that would not hold a grown hunter, and because neither had ever been seen without the other.</p>
+<p>They were given the torch and a bundle of wood. They were told one thing: light every hearth you find.</p>
+<p class="last">Then Kesa and Brimi walked out of the cave, and the red trail began.</p>
+</div><div class="kids"><img src="/img/pair.png" alt="Kesa holding the torch, beside Brimi"></div></div></section>
+
+<section class="play" id="play"><div class="wrap">
+<h2>How it plays</h2>
+<p class="lead">Two children share one torch. Keep it lit, keep it moving, and keep each other close.</p>
+<div class="cards">
+<div class="card"><h3>Pass the fire</h3><p>Hand the torch over when you're side by side, or throw it across a gap and hope it's caught.</p></div>
+<div class="card"><h3>Feed the flame</h3><p>The fire burns down as you walk, and the circle of light shrinks with it. Wood brings it back.</p></div>
+<div class="card"><h3>Stay in the light</h3><p>In caves and at night the torch is the only light. Whatever waits in the dark stays hidden until it crosses the edge.</p></div>
+<div class="card"><h3>One carries, one fights</h3><p>The one holding the torch can barely fight. The other finds clubs, spears and axes left along the trail.</p></div>
+<div class="card"><h3>Never alone in the dark</h3><p>Neither child steps into a cave until the other is close enough to share the light.</p></div>
+<div class="card"><h3>Light every hearth</h3><p>Each hearth you light is a night the Eld will live through, and the place you start again.</p></div>
+</div>
+<div class="modes">
+<div class="mode"><b>TOGETHER</b><span>Two players, one child each, side by side on one screen.</span></div>
+<div class="mode"><b>ALONE</b><span>One player. The computer plays the other child.</span></div>
+</div>
+<p class="note">Eight days to the Great Ember as most tell it. Eleven as the old ones tell it.</p>
+</div></section>
+
+<section class="screens" id="screens"><div class="wrap">
+<h2>Screens</h2>
+<p class="lead">Day 1: the cave of the Eld, the snow, the frozen woods, and what waits under the ice.</p>
+<div class="shots">
+<figure><img src="/img/s1.png" alt="The cave of the Eld, the elders around the fire"><figcaption>THE CAVE OF THE ELD</figcaption></figure>
+<figure><img src="/img/s2.png" alt="Out on the snow: the first stone with its red handprints"><figcaption>OUT ON THE SNOW</figcaption></figure>
+<figure><img src="/img/s3.png" alt="The frozen woods"><figcaption>THE FROZEN WOODS</figcaption></figure>
+<figure><img src="/img/s4.png" alt="Dousa rising from the ice"><figcaption>DOUSA</figcaption></figure>
+</div>
+</div></section>
+
+<section class="where" id="where"><div class="wrap">
+<h2>Where to play</h2>
+<p class="lead">One Flame is an original NES game, still being made. When it's out, you'll be able to play it:</p>
+<ul>
+<li>free on Steam;</li>
+<li>free on iPhone from the App Store, and on Android phones from Google Play;</li>
+<li>in Classic Cart Studio, in your browser or on Windows;</li>
+<li>on an NES Classic Edition, added with Classic Cart Studio or hakchi2 CE;</li>
+<li>in an NES emulator on your computer, phone or handheld.</li>
+</ul>
+<div class="stores">
+<span class="store asw"><img class="as" src="/img/appstore-badge-black.svg" alt="Download on the App Store"></span>
+<span class="store gpw"><img class="gp" src="/img/googleplay-badge.png" alt="Get it on Google Play"></span>
+<span class="store box steam"><img class="st" src="/img/steam-logo-white.png" alt="Steam"></span>
+<span class="box ccs"><img class="ci" src="/img/ccs-icon.png" alt=""><img class="cw" src="/img/ccs-wordmark.png" alt="Classic Cart Studio"></span>
+<a class="box rom" href="/download/" title="Download the NES ROM"><img class="ri" src="/img/rom-chip.png" alt=""><span><small>DOWNLOAD THE</small><b>NES ROM</b></span></a>
+</div>
+</div></section>
+
+{latest.length > 0 && (
+<section class="news" id="news"><div class="wrap">
+<h2>Latest news</h2>
+<div class="grid">
+{latest.map((post) => (
+<article class="post"><img src={post.data.cover} alt=""><div><time datetime={isoDate(post.data.date)}>{shortDate(post.data.date)}</time><h3>{post.data.title}</h3><p>{post.data.summary}</p></div></article>
+))}
+</div>
+<a class="more" href="/news/">ALL NEWS &#8594;</a>
+</div></section>
+)}
+
+</Base>
