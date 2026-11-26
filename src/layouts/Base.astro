@@ -1,0 +1,68 @@
+---
+import '@fontsource/silkscreen/400.css';
+import '@fontsource/pixelify-sans/500.css';
+import '@fontsource/pixelify-sans/700.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '../styles/site.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  /** The page title, shown in the browser tab and on share cards. */
+  title: string;
+  /** One line from the page, for search results and share cards. */
+  description: string;
+  /** Site path of the share card picture. */
+  image?: string;
+  imageAlt?: string;
+  type?: 'website' | 'article';
+  /** True on the main page, where the menu's section links jump within the page. */
+  home?: boolean;
+  active?: 'news' | 'rance9';
+  /** False on the not-found page, which has no address of its own. */
+  canonical?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/img/title-art.png',
+  imageAlt = 'One Flame: two children with a torch on a snowfield at night, mountains and a smoking volcano behind',
+  type = 'website',
+  home = false,
+  active,
+  canonical = true,
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://oneflamegame.com');
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const pageUrl = new URL(path, site).href.toLowerCase();
+const imageUrl = new URL(image, site).href;
+const beaconToken = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_BEACON_TOKEN : undefined;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{title}</title>
+<meta name="description" content={description}>
+{canonical && <link rel="canonical" href={pageUrl}>}
+<meta property="og:site_name" content="OneFlameGame.com">
+<meta property="og:type" content={type}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+{canonical && <meta property="og:url" content={pageUrl}>}
+<meta property="og:image" content={imageUrl}>
+<meta property="og:image:alt" content={imageAlt}>
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<Nav home={home} active={active} />
+<slot />
+<Footer />
+{beaconToken && <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: beaconToken })}></script>}
+</body>
+</html>

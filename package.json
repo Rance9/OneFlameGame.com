@@ -1,0 +1,17 @@
+{
+  "name": "oneflamegame.com",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/astro.mjs dev",
+    "build": "node scripts/astro.mjs build",
+    "preview": "node scripts/astro.mjs preview",
+    "astro": "node scripts/astro.mjs"
+  },
+  "dependencies": {
+    "@fontsource/inter": "5.3.0",
+    "@fontsource/pixelify-sans": "5.3.0",
+    "@fontsource/silkscreen": "5.3.0",
+    "astro": "7.4.13"
+  }
+}

@@ -1,0 +1,43 @@
+---
+interface Props {
+  home?: boolean;
+  active?: 'news' | 'rance9';
+}
+const { home = false, active } = Astro.props;
+const at = home ? '' : '/';
+const sections = [
+  ['tale', 'The tale'],
+  ['play', 'How it plays'],
+  ['screens', 'Screens'],
+  ['where', 'Where to play'],
+];
+const pages = [
+  ['news', '/news/', 'News'],
+  ['rance9', '/rance9/', 'Rance9'],
+];
+---
+<nav><a class="brand" href="/">One Flame</a><div class="links">{sections.map(([id, label]) => <a href={`${at}#${id}`}>{label}</a>)}<span class="sep"></span>{pages.map(([key, href, label]) => <a class:list={['page', { on: active === key }]} href={href} aria-current={active === key ? 'page' : undefined}>{label}</a>)}</div><button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button><div class="menu" id="menu" hidden>{sections.map(([id, label]) => <a href={`${at}#${id}`}>{label}</a>)}{pages.map(([key, href, label]) => <a class:list={['page', { on: active === key }]} href={href} aria-current={active === key ? 'page' : undefined}>{label}</a>)}</div></nav>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('nav .burger');
+  const menu = document.getElementById('menu');
+  if (button && menu) {
+    const setOpen = (open: boolean) => {
+      button.setAttribute('aria-expanded', String(open));
+      menu.hidden = !open;
+    };
+    button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+    menu.addEventListener('click', (event) => {
+      if ((event.target as Element).closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.hidden) {
+        setOpen(false);
+        button.focus();
+      }
+    });
+    window.matchMedia('(min-width: 821px)').addEventListener('change', (event) => {
+      if (event.matches) setOpen(false);
+    });
+  }
+</script>

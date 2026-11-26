@@ -2,8 +2,13 @@
 /planning/
 /temp/
 
-# Dependencies and local environment
+# Pictures kept local until clean copies are decided
+/public/img/
+
+# Dependencies, build output and local environment
 node_modules/
+dist/
+.astro/
 .env
 .env.*
 
