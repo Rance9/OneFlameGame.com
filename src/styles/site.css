@@ -154,6 +154,9 @@ h1{font:400 40px Silkscreen;margin:0 0 14px;background:linear-gradient(#f2e3a6 0
 .post-page{padding:30px 18px 56px}.post-page h1{font-size:32px}.body p{font-size:17.5px}.body .inline,.next{grid-template-columns:1fr}.next .r{text-align:left}
 .r9{padding:36px 18px 56px}.r9 .lead{font-size:19px}.r9 p{font-size:17.5px}.also{grid-template-columns:1fr;justify-items:center;text-align:center}.also .ccs-mark img{margin:0 auto}}
 
+/* the stars belong to the main page's title-screen sky only */
+body:not(.home){background-image:none}
+
 /* the phone menu: a full-width panel under the menu bar, in the menu bar's colors and font */
 .burger{cursor:pointer}
 .menu{position:absolute;top:calc(100% + 1px);left:0;right:0;display:flex;flex-direction:column;align-items:center;padding:8px max(4vw,16px) 14px;background:var(--night);border-bottom:1px solid var(--line)}

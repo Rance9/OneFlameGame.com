@@ -59,7 +59,7 @@ const beaconToken = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_BEACON_TOKE
 <meta property="og:image:alt" content={imageAlt}>
 <meta name="twitter:card" content="summary_large_image">
 </head>
-<body>
+<body class:list={[{ home }]}>
 <Nav home={home} active={active} />
 <slot />
 <Footer />
