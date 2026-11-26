@@ -1,0 +1,102 @@
+{
+  "title": "Privacy",
+  "updated": "Last updated November 26, 2026.",
+  "intro": "OneFlameGame.com is the website for One Flame, an independent game by Rance9 LLC. We built this site and the game to collect as little as possible. This page explains what is collected, by whom, and why.",
+  "sections": [
+    {
+      "head": "Who we are",
+      "paragraphs": [
+        "Rance9 LLC (\"Rance9,\" \"we,\" \"us\") publishes One Flame and runs OneFlameGame.com. You can reach us at rance9@classiccartstudio.com."
+      ],
+      "items": []
+    },
+    {
+      "head": "What this page covers",
+      "paragraphs": [
+        "This policy covers OneFlameGame.com, the One Flame ROM you can download here, and the One Flame versions for Steam, iPhone and Android."
+      ],
+      "items": []
+    },
+    {
+      "head": "What we never collect",
+      "paragraphs": [
+        "We do not ask for or collect your name, email address, phone number, postal address, payment details or account details. There are no sign-ups, forms, comments, likes or accounts on this site, and downloading One Flame never requires any information from you.",
+        "We do not sell, rent or share personal information, and we do not use advertising, ad networks or tracking across other websites."
+      ],
+      "items": []
+    },
+    {
+      "head": "Visits to this site",
+      "paragraphs": [
+        "We count visits with Cloudflare Web Analytics, a privacy-focused service that does not use cookies or local storage and does not collect personal data. It gives us totals such as:"
+      ],
+      "items": [
+        "how many pages were viewed and which ones;",
+        "the website that linked you here, if any;",
+        "your country, worked out from your connection but not stored with any identifier;",
+        "your browser, operating system and type of device;",
+        "how quickly pages loaded."
+      ]
+    },
+    {
+      "head": "Downloads",
+      "paragraphs": [
+        "When you download the One Flame ROM, the download passes through a small Cloudflare service that adds one record to a count. Each record holds only the version downloaded, your browser, operating system and type of device, your country and the page you came from. It does not store your IP address or any identifier, and it cannot tell us who you are."
+      ],
+      "items": []
+    },
+    {
+      "head": "Hosting and security",
+      "paragraphs": [
+        "This site is hosted on GitHub Pages. Its visit statistics and download count run on Cloudflare. To deliver pages and downloads, GitHub and Cloudflare receive your IP address, as any web service does, and GitHub logs and stores visitors' IP addresses for security purposes. They handle that information under their own privacy policies (GitHub's Privacy Statement and Cloudflare's Privacy Policy). We do not receive those logs."
+      ],
+      "items": []
+    },
+    {
+      "head": "Cookies",
+      "paragraphs": [
+        "This site does not set cookies. Our own pages and our analytics use no cookies or similar tracking technologies."
+      ],
+      "items": []
+    },
+    {
+      "head": "The game and its apps",
+      "paragraphs": [
+        "One Flame contains no ads, no analytics and no tracking. It does not send your play, saves or any other information to us."
+      ],
+      "items": [
+        "Your saves stay on your device. On Steam, they are kept in a folder for your Steam account and synced by Steam Cloud, under Valve's privacy policy. The Steam version checks which Steam account is playing only so it can keep each account's saves separate; that check happens on your computer and nothing is sent to us.",
+        "On iPhone and Android, saves stay on your phone. The apps make no network connections during play. The only time they go online is if you choose to open a link to another website.",
+        "If you get One Flame from Steam, the App Store or Google Play, Valve, Apple or Google handle your purchase, download and account under their own privacy policies."
+      ]
+    },
+    {
+      "head": "Children",
+      "paragraphs": [
+        "One Flame is made for players of all ages. Because neither the site nor the game collects personal information from anyone, we do not knowingly collect personal information from children."
+      ],
+      "items": []
+    },
+    {
+      "head": "Your choices and rights",
+      "paragraphs": [
+        "You can block Cloudflare Web Analytics with your browser's privacy settings or a content blocker, and the site will still work. Since we hold no personal information about you, there is nothing for us to look up, correct or delete, but you are welcome to write to us with any question about your privacy, wherever you live."
+      ],
+      "items": []
+    },
+    {
+      "head": "Changes to this policy",
+      "paragraphs": [
+        "If what we collect changes, we will update this page and the date at the top before the change takes effect."
+      ],
+      "items": []
+    },
+    {
+      "head": "Contact",
+      "paragraphs": [
+        "Questions about privacy: rance9@classiccartstudio.com."
+      ],
+      "items": []
+    }
+  ]
+}

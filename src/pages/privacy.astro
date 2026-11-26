@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import privacy from '../data/privacy.json';
+
+const firstSentence = privacy.intro.split('. ')[0] + '.';
+---
+<Base title="Privacy - One Flame" description={firstSentence}>
+<section class="post-page terms"><div class="wrap">
+<h1>{privacy.title}</h1>
+<p class="vers">{privacy.updated.toUpperCase()}</p>
+<p class="lead">{privacy.intro}</p>
+<div class="body">{privacy.sections.map((section) => (
+<Fragment><h2>{section.head}</h2>{section.paragraphs.map((text) => <p>{text}</p>)}{section.items.length > 0 && <ul>{section.items.map((item) => <li>{item}</li>)}</ul>}</Fragment>
+))}</div>
+</div></section>
+</Base>
