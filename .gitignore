@@ -1,0 +1,14 @@
+# Local planning and scratch folders (never published)
+/planning/
+/temp/
+
+# Dependencies and local environment
+node_modules/
+.env
+.env.*
+
+# OS and sync clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
