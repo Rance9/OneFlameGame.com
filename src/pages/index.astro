@@ -7,7 +7,7 @@ const latest = (await getPosts()).slice(0, 3);
 ---
 <Base title="One Flame" description="Two children. One fire. A whole ice age to cross." home>
 
-<header class="hero"><NightSky /><div><img src="/img/title-art.png" alt="One Flame: two children with a torch on a snowfield at night, mountains and a smoking volcano behind">
+<header class="hero"><NightSky /><div><picture><source srcset="/img/title-art.png" media="(prefers-reduced-motion: reduce)"><img src="/img/title-art-animated.gif" alt="One Flame: two children with a torch on a snowfield at night, mountains and a smoking volcano behind" width="1024" height="636"></picture>
 <p class="tag">Two children. One fire. A whole ice age to cross.</p><p class="cue">SCROLL<b>&#9660;</b></p></div></header>
 
 <section class="tale" id="tale"><div class="wrap"><div>
@@ -21,14 +21,14 @@ const latest = (await getPosts()).slice(0, 3);
 
 <section class="play" id="play"><div class="wrap">
 <h2>How it plays</h2>
-<p class="lead">Two children share one torch. Keep it lit, keep it moving, and keep each other close, all the way to the Great Ember.</p>
+<p class="lead">Two children, one torch. Keep it lit and keep each other close, all the way to the Great Ember.</p>
 <div class="cards">
-<div class="card"><h3>Pass the fire</h3><p>Hand the torch over when you're side by side, or throw it across a gap and hope it's caught.</p></div>
-<div class="card"><h3>Feed the flame</h3><p>The fire burns down as you walk, and the circle of light shrinks with it. Wood brings it back.</p></div>
-<div class="card"><h3>Stay in the light</h3><p>In caves and at night the torch is the only light. Whatever waits in the dark stays hidden until it crosses the edge.</p></div>
-<div class="card"><h3>One carries, one fights</h3><p>The one holding the torch can barely fight. The other finds clubs, spears and axes left along the trail.</p></div>
-<div class="card"><h3>Light every hearth</h3><p>Each hearth you light is a night the Eld will live through, and the place you start again.</p></div>
-<div class="card"><h3>Reach the Great Ember</h3><p>Carry the torch to the mountain that smokes. The Eld follow your trail of hearths all the way to the Great Ember.</p></div>
+<div class="card"><img src="/img/how-1.png" alt="Kesa throws the torch over the water to Brimi at the old fish weir" width="256" height="192"><h3>1. Pass the fire</h3><p>Hand the torch over when you're side by side, or throw it across a gap. Handing it over is free; every throw costs some flame.</p></div>
+<div class="card"><img src="/img/how-2.png" alt="Kesa, with the torch, walks to a bundle of wood at the edge of her light in a dark cave" width="256" height="192"><h3>2. Feed the flame</h3><p>The torch burns its wood by itself, and the light shrinks as it goes. Pick up wood to bring it back.</p></div>
+<div class="card"><img src="/img/how-3.png" alt="Kesa and Brimi inside the torch's light on a cave ledge, a wolf's eyes in the dark beyond" width="256" height="192"><h3>3. Stay in the light</h3><p>In caves, deep woods and at night, the torch is the only light. Whatever waits in the dark stays hidden until it reaches the edge.</p></div>
+<div class="card"><img src="/img/how-4.png" alt="Brimi drives a glass-tipped spear at a wolf's eyes while Kesa holds the torch in the dark woods" width="256" height="192"><h3>4. One carries, one fights</h3><p>The one holding the torch can barely fight. The other finds clubs, spears and axes along the trail.</p></div>
+<div class="card"><img src="/img/how-5.png" alt="Kesa and Brimi beside a hearth they have just lit on its pillar above the river" width="256" height="192"><h3>5. Light every hearth</h3><p>Each hearth you light is a night the Eld will live through, and the place you start again.</p></div>
+<div class="card"><img src="/img/how-6.png" alt="Kesa and Brimi with the torch on a snowfield at night, the smoking mountain far off" width="256" height="192"><h3>6. Reach the Great Ember</h3><p>Carry the torch to the mountain that smokes. The Eld follow your trail of hearths all the way to the Great Ember.</p></div>
 </div>
 <div class="modes">
 <div class="mode"><b>TOGETHER</b><span>Two players, one child each, side by side on one screen.</span></div>
