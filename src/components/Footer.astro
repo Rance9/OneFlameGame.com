@@ -1,11 +1,11 @@
 ---
 interface Props {
-  /** True on the About Rance9 page, whose footer is the row of links only. */
-  onAbout?: boolean;
+  /** True on every page but the main page: the footer is the row of links only. */
+  linksOnly?: boolean;
 }
-const { onAbout = false } = Astro.props;
+const { linksOnly = false } = Astro.props;
 ---
-{onAbout ? (
+{linksOnly ? (
 <footer class="links-only"><div class="fl"><a href="/news/">NEWS</a><a href="/rance9/">RANCE9</a><a href="/terms/">TERMS</a><a href="/privacy/">PRIVACY</a><a href="#">BACK TO TOP &#8593;</a></div></footer>
 ) : (
 <footer><div class="wrap"><a href="/rance9/"><img src="/img/rance9.png" alt="Rance9"></a>

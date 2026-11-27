@@ -73,7 +73,7 @@ const beaconToken = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_BEACON_TOKE
 {starry && <NightSky fixed />}
 <Nav home={home} active={active} />
 <slot />
-<Footer onAbout={active === 'rance9'} />
+<Footer linksOnly={!home} />
 <audio id="music" src="/audio/one-flame-bone-hollows.m4a" loop preload="none" transition:persist="music-audio"></audio>
 </body>
 </html>
