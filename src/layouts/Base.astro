@@ -9,6 +9,7 @@ import '../styles/site.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import NightSky from '../components/NightSky.astro';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   /** The page title, shown in the browser tab and on share cards. */
@@ -47,7 +48,7 @@ const imageUrl = new URL(image, site).href;
 const beaconToken = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_BEACON_TOKEN : undefined;
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" transition:animate="none">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -65,12 +66,14 @@ const beaconToken = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_BEACON_TOKE
 <meta property="og:image" content={imageUrl}>
 <meta property="og:image:alt" content={imageAlt}>
 <meta name="twitter:card" content="summary_large_image">
+<ClientRouter />
+{beaconToken && <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: beaconToken, spa: true })}></script>}
 </head>
 <body class:list={[{ home, starry }]}>
 {starry && <NightSky fixed />}
 <Nav home={home} active={active} />
 <slot />
 <Footer onAbout={active === 'rance9'} />
-{beaconToken && <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: beaconToken })}></script>}
+<audio id="music" src="/audio/one-flame-bone-hollows.m4a" loop preload="none" transition:persist="music-audio"></audio>
 </body>
 </html>

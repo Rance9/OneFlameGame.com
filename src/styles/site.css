@@ -157,6 +157,13 @@ h1{font:400 40px Silkscreen;margin:0 0 14px;background:linear-gradient(#f2e3a6 0
 /* the sixth Where to play box: the NES ROM box's text, with the One Flame cartridge */
 .cart .ci{width:64px;height:64px}
 
+/* the menu bar's right side: links, the title song button, the phone menu button */
+.nav-right{display:flex;align-items:center;gap:20px}
+.music{background:none;border:0;padding:4px;margin:0;cursor:pointer;color:var(--cream);display:flex;align-items:center}
+.music svg{width:24px;height:24px;display:block;fill:currentColor;shape-rendering:crispEdges}
+.music .on,.music[aria-pressed="true"] .off{display:none}.music[aria-pressed="true"] .on{display:block}
+.music:hover,.music[aria-pressed="true"]{color:var(--ember)}
+
 /* the title screen's ONE FLAME lettering as the menu bar's logo */
 .brand img{display:block;height:30px;width:auto}
 

@@ -16,28 +16,57 @@ const pages = [
   ['rance9', '/rance9/', 'Rance9'],
 ];
 ---
-<nav><a class="brand" href="/"><img src="/img/one-flame-logo.png" alt="One Flame" width="872" height="160"></a><div class="links">{sections.map(([id, label]) => <a href={`${at}#${id}`}>{label}</a>)}<span class="sep"></span>{pages.map(([key, href, label]) => <a class:list={['page', { on: active === key }]} href={href} aria-current={active === key ? 'page' : undefined}>{label}</a>)}</div><button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button><div class="menu" id="menu" hidden>{sections.map(([id, label]) => <a href={`${at}#${id}`}>{label}</a>)}{pages.map(([key, href, label]) => <a class:list={['page', { on: active === key }]} href={href} aria-current={active === key ? 'page' : undefined}>{label}</a>)}</div></nav>
+<nav><a class="brand" href="/"><img src="/img/one-flame-logo.png" alt="One Flame" width="872" height="160"></a><div class="nav-right"><div class="links">{sections.map(([id, label]) => <a href={`${at}#${id}`}>{label}</a>)}<span class="sep"></span>{pages.map(([key, href, label]) => <a class:list={['page', { on: active === key }]} href={href} aria-current={active === key ? 'page' : undefined}>{label}</a>)}</div><button class="music" type="button" aria-pressed="false" aria-label="Play the music" title="Play the music" transition:persist="music-button"><svg class="off" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 4h3v4H1zM4 3h1v6H4zM5 2h1v8H5zM6 1h1v10H6zM8 4h1v1H8zM9 5h1v1H9zM10 6h1v1h-1zM11 7h1v1h-1zM11 4h1v1h-1zM10 5h1v1h-1zM9 6h1v1H9zM8 7h1v1H8z"/></svg><svg class="on" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 4h3v4H1zM4 3h1v6H4zM5 2h1v8H5zM6 1h1v10H6zM8 5h1v2H8zM9 4h1v1H9zM9 7h1v1H9zM10 2h1v1h-1zM10 9h1v1h-1zM11 3h1v6h-1z"/></svg></button><button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button></div><div class="menu" id="menu" hidden>{sections.map(([id, label]) => <a href={`${at}#${id}`}>{label}</a>)}{pages.map(([key, href, label]) => <a class:list={['page', { on: active === key }]} href={href} aria-current={active === key ? 'page' : undefined}>{label}</a>)}</div></nav>
 
 <script>
-  const button = document.querySelector<HTMLButtonElement>('nav .burger');
-  const menu = document.getElementById('menu');
-  if (button && menu) {
-    const setOpen = (open: boolean) => {
-      button.setAttribute('aria-expanded', String(open));
-      menu.hidden = !open;
-    };
-    button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+  // The phone menu: set up on every page, since the client-side router swaps in a new menu bar.
+  const menuParts = () => ({ button: document.querySelector<HTMLButtonElement>('nav .burger'), menu: document.getElementById('menu') });
+  const setMenu = (open: boolean) => {
+    const { button, menu } = menuParts();
+    if (!button || !menu) return;
+    button.setAttribute('aria-expanded', String(open));
+    menu.hidden = !open;
+  };
+  document.addEventListener('astro:page-load', () => {
+    const { button, menu } = menuParts();
+    if (!button || !menu) return;
+    button.addEventListener('click', () => setMenu(button.getAttribute('aria-expanded') !== 'true'));
     menu.addEventListener('click', (event) => {
-      if ((event.target as Element).closest('a')) setOpen(false);
+      if ((event.target as Element).closest('a')) setMenu(false);
     });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && !menu.hidden) {
-        setOpen(false);
-        button.focus();
-      }
+  });
+  document.addEventListener('keydown', (event) => {
+    const { button, menu } = menuParts();
+    if (event.key === 'Escape' && menu && !menu.hidden) {
+      setMenu(false);
+      button?.focus();
+    }
+  });
+  window.matchMedia('(min-width: 821px)').addEventListener('change', (event) => {
+    if (event.matches) setMenu(false);
+  });
+
+  // The music: the player and its button are kept across page changes, so the song plays on unbroken.
+  // The button pauses and resumes it right where it was.
+  document.addEventListener('astro:page-load', () => {
+    const audio = document.getElementById('music') as HTMLAudioElement | null;
+    const button = document.querySelector<HTMLButtonElement>('nav .music');
+    if (!audio || !button || button.dataset.ready) return;
+    button.dataset.ready = 'yes';
+    audio.volume = 0.6;
+    const show = () => {
+      const playing = !audio.paused;
+      const label = playing ? 'Pause the music' : 'Play the music';
+      button.setAttribute('aria-pressed', String(playing));
+      button.setAttribute('aria-label', label);
+      button.title = label;
+    };
+    button.addEventListener('click', () => {
+      if (audio.paused) audio.play().catch(() => show());
+      else audio.pause();
     });
-    window.matchMedia('(min-width: 821px)').addEventListener('change', (event) => {
-      if (event.matches) setOpen(false);
-    });
-  }
+    audio.addEventListener('play', show);
+    audio.addEventListener('pause', show);
+    show();
+  });
 </script>

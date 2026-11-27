@@ -14,9 +14,11 @@ const { fixed = false } = Astro.props;
   const colors = ['255,255,255', '255,255,255', '255,255,255', '242,227,166', '207,230,255'];
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  for (const canvas of document.querySelectorAll<HTMLCanvasElement>('canvas.sky')) {
+  // Each page's skies start when the page loads and stop before the client-side router swaps the page.
+  const stoppers: (() => void)[] = [];
+  const startSky = (canvas: HTMLCanvasElement) => {
     const ctx = canvas.getContext('2d');
-    if (!ctx) continue;
+    if (!ctx) return;
     let stars: Star[] = [];
     let unit = 1;
 
@@ -83,14 +85,18 @@ const { fixed = false } = Astro.props;
     };
 
     let resizeTimer = 0, lastSize = '';
-    new ResizeObserver(() => {
+    const observer = new ResizeObserver(() => {
       const size = `${canvas.clientWidth}x${canvas.clientHeight}`;
       if (size === lastSize) return;
       lastSize = size;
       clearTimeout(resizeTimer);
       resizeTimer = window.setTimeout(start, 200);
-    }).observe(canvas);
+    });
+    observer.observe(canvas);
     reduceMotion.addEventListener('change', start);
     start();
-  }
+    stoppers.push(() => { cancelAnimationFrame(frame); clearTimeout(resizeTimer); observer.disconnect(); reduceMotion.removeEventListener('change', start); });
+  };
+  document.addEventListener('astro:page-load', () => document.querySelectorAll<HTMLCanvasElement>('canvas.sky').forEach(startSky));
+  document.addEventListener('astro:before-swap', () => { while (stoppers.length) stoppers.pop()!(); });
 </script>
