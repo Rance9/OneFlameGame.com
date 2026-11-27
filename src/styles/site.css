@@ -32,6 +32,7 @@ p{margin:0 0 16px;max-width:62ch}
 .card h3:before{content:"";width:10px;height:14px;background:linear-gradient(#f2e3a6 0 30%,#f08a24 30% 65%,#b3261e 65%);clip-path:polygon(50% 0,100% 45%,85% 100%,15% 100%,0 45%)}
 .card p{font-size:16.5px;color:var(--dim);margin:0}
 /* How it plays: each card's game picture at exactly 2x (256 by 192), centered above the title */
+.play .card h3:before{content:none}
 .play .card img{display:block;width:256px;height:auto;max-width:100%;image-rendering:pixelated;margin:0 auto 14px}
 /* under 380px wide the cards' side padding drops so the picture keeps its full 256px on a 320px screen (13px leaves exactly 256) */
 @media(max-width:379px){.play .card{padding-left:13px;padding-right:13px}}
@@ -177,6 +178,17 @@ h1{font:400 40px Silkscreen;margin:0 0 14px;background:linear-gradient(#f2e3a6 0
 
 /* the title screen's ONE FLAME lettering as the menu bar's logo */
 .brand img{display:block;height:30px;width:auto}
+
+/* the flame in the O, flickering: three frames from the title screen's animation (0,1,2,1 at 110ms each), in /img/flame.png */
+@keyframes flame{0%{background-position:0 0}25%{background-position:50% 0}50%{background-position:100% 0}75%{background-position:50% 0}}
+/* over the menu-bar logo's O, on the logo's own black so it covers the still flame exactly */
+.brand{position:relative;display:block}
+.brand .flame{position:absolute;left:5.0459%;top:38.125%;width:3.6697%;height:28.125%;background:#000 url(/img/flame.png) 0 0/300% 100% no-repeat;animation:flame .44s steps(1) infinite}
+/* as the Where to play bullets, each a beat apart so they don't flicker in step */
+.where ul{list-style:none}.where li{position:relative}
+.where li:before{content:"";position:absolute;left:-20px;top:calc(.8em - 6px);width:9px;height:12.66px;background:url(/img/flame.png) 0 0/300% 100% no-repeat;animation:flame .44s steps(1) infinite}
+.where li:nth-child(3n+2):before{animation-delay:-.11s}.where li:nth-child(3n):before{animation-delay:-.22s}
+@media(prefers-reduced-motion:reduce){.brand .flame{display:none}.where li:before{animation:none;background-position:50% 0}}
 
 /* the download page before release: the chip centered over the COMING SOON tag, the pair kept where the tag sits */
 .dl .soonmark{display:flex;flex-direction:column;align-items:center;width:max-content}
