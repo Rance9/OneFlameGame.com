@@ -3,7 +3,8 @@ interface Props {
   home?: boolean;
   active?: 'news' | 'rance9';
 }
-const { home = false, active } = Astro.props;
+const { home = false, active: activePage } = Astro.props;
+const active = home ? 'home' : activePage;
 const at = home ? '' : '/';
 const sections = [
   ['tale', 'The tale'],
@@ -12,6 +13,7 @@ const sections = [
   ['where', 'Where to play'],
 ];
 const pages = [
+  ['home', '/', 'Home'],
   ['news', '/news/', 'News'],
   ['rance9', '/rance9/', 'Rance9'],
 ];
@@ -42,7 +44,7 @@ const pages = [
       button?.focus();
     }
   });
-  window.matchMedia('(min-width: 821px)').addEventListener('change', (event) => {
+  window.matchMedia('(min-width: 1060px)').addEventListener('change', (event) => {
     if (event.matches) setMenu(false);
   });
 
