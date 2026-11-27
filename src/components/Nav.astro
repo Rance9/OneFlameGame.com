@@ -18,7 +18,7 @@ const pages = [
   ['rance9', '/rance9/', 'Rance9'],
 ];
 ---
-<nav><a class="brand" href="/"><img src="/img/one-flame-logo.png" alt="One Flame" width="872" height="160"></a><div class="nav-right"><div class="links">{sections.map(([id, label]) => <a href={`${at}#${id}`}>{label}</a>)}<span class="sep"></span>{pages.map(([key, href, label]) => <a class:list={['page', { on: active === key }]} href={href} aria-current={active === key ? 'page' : undefined}>{label}</a>)}</div><button class="music" type="button" aria-pressed="false" aria-label="Play the music" title="Play the music" transition:persist="music-button"><svg class="off" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 4h3v4H1zM4 3h1v6H4zM5 2h1v8H5zM6 1h1v10H6zM8 4h1v1H8zM9 5h1v1H9zM10 6h1v1h-1zM11 7h1v1h-1zM11 4h1v1h-1zM10 5h1v1h-1zM9 6h1v1H9zM8 7h1v1H8z"/></svg><svg class="on" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 4h3v4H1zM4 3h1v6H4zM5 2h1v8H5zM6 1h1v10H6zM8 5h1v2H8zM9 4h1v1H9zM9 7h1v1H9zM10 2h1v1h-1zM10 9h1v1h-1zM11 3h1v6h-1z"/></svg></button><button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button></div><div class="menu" id="menu" hidden>{sections.map(([id, label]) => <a href={`${at}#${id}`}>{label}</a>)}{pages.map(([key, href, label]) => <a class:list={['page', { on: active === key }]} href={href} aria-current={active === key ? 'page' : undefined}>{label}</a>)}</div></nav>
+<nav><a class="brand" href="/"><img src="/img/one-flame-logo.png" alt="One Flame" width="872" height="160"></a><div class="nav-right"><div class="links">{sections.map(([id, label]) => <a href={`${at}#${id}`} data-key={id}>{label}</a>)}<span class="sep"></span>{pages.map(([key, href, label]) => <a class:list={['page', { on: active === key }]} href={href} data-key={key} aria-current={active === key ? 'page' : undefined}>{label}</a>)}</div><button class="music" type="button" aria-pressed="false" aria-label="Play the music" title="Play the music" transition:persist="music-button"><svg class="off" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 4h3v4H1zM4 3h1v6H4zM5 2h1v8H5zM6 1h1v10H6zM8 4h1v1H8zM9 5h1v1H9zM10 6h1v1h-1zM11 7h1v1h-1zM11 4h1v1h-1zM10 5h1v1h-1zM9 6h1v1H9zM8 7h1v1H8z"/></svg><svg class="on" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 4h3v4H1zM4 3h1v6H4zM5 2h1v8H5zM6 1h1v10H6zM8 5h1v2H8zM9 4h1v1H9zM9 7h1v1H9zM10 2h1v1h-1zM10 9h1v1h-1zM11 3h1v6h-1z"/></svg></button><button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button></div><div class="menu" id="menu" hidden>{sections.map(([id, label]) => <a href={`${at}#${id}`} data-key={id}>{label}</a>)}{pages.map(([key, href, label]) => <a class:list={['page', { on: active === key }]} href={href} data-key={key} aria-current={active === key ? 'page' : undefined}>{label}</a>)}</div></nav>
 
 <script>
   // The phone menu: set up on every page, since the client-side router swaps in a new menu bar.
@@ -46,6 +46,48 @@ const pages = [
   });
   window.matchMedia('(min-width: 1060px)').addEventListener('change', (event) => {
     if (event.matches) setMenu(false);
+  });
+
+  // On the main page the underline follows the reader: Home while the top of the page is in view,
+  // then the link of each section once that section is reached.
+  const SPY: [string, string][] = [['tale', 'tale'], ['play', 'play'], ['screens', 'screens'], ['where', 'where'], ['news', 'news']];
+  let stopSpy: AbortController | undefined;
+  document.addEventListener('astro:before-swap', () => stopSpy?.abort());
+  document.addEventListener('astro:page-load', () => {
+    stopSpy?.abort();
+    if (!document.body.classList.contains('home')) return;
+    stopSpy = new AbortController();
+    const nav = document.querySelector('nav');
+    const parts = SPY.map(([id, key]) => ({ section: document.getElementById(id), key })).filter((p) => p.section);
+    let shown = '';
+    const mark = (key: string) => {
+      if (key === shown) return;
+      shown = key;
+      document.querySelectorAll<HTMLAnchorElement>('nav a[data-key]').forEach((a) => {
+        const here = a.dataset.key === key;
+        a.classList.toggle('on', here);
+        if (a.dataset.key !== 'home') {
+          if (here) a.setAttribute('aria-current', 'location');
+          else a.removeAttribute('aria-current');
+        }
+      });
+    };
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      // A section counts as reached once its top passes a line a third of the way down the window, below the menu bar.
+      const top = nav ? nav.getBoundingClientRect().bottom : 0;
+      const line = top + (innerHeight - top) / 3;
+      const atBottom = innerHeight + scrollY >= document.documentElement.scrollHeight - 2;
+      let key = 'home';
+      for (const p of parts) if (p.section!.getBoundingClientRect().top <= line) key = p.key;
+      if (atBottom && parts.length) key = parts[parts.length - 1].key;
+      mark(key);
+    };
+    const later = () => { if (!frame) frame = requestAnimationFrame(update); };
+    addEventListener('scroll', later, { passive: true, signal: stopSpy.signal });
+    addEventListener('resize', later, { signal: stopSpy.signal });
+    update();
   });
 
   // The music: the player and its button are kept across page changes, so the song plays on unbroken.
