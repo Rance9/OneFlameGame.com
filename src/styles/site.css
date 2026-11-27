@@ -34,6 +34,7 @@ p{margin:0 0 16px;max-width:62ch}
 /* How it plays: each card's game picture at exactly 2x (256 by 192), centered above the title */
 .play .card h3:before{content:none}
 .play .card img{display:block;width:256px;height:auto;max-width:100%;image-rendering:pixelated;margin:0 auto 14px}
+.play .card h3,.play .card p{max-width:256px;margin-left:auto;margin-right:auto}
 /* under 380px wide the cards' side padding drops so the picture keeps its full 256px on a 320px screen (13px leaves exactly 256) */
 @media(max-width:379px){.play .card{padding-left:13px;padding-right:13px}}
 .modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
